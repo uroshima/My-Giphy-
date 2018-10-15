@@ -45,6 +45,7 @@ class DisplayGif extends Component {
 
   showSearch() {
     console.log("inside showSearch");
+    
   }
 
   render() {
