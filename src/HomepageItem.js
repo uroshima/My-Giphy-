@@ -1,37 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const HomepageItem = ({ data, }) => (
-  <div>
-    <p>Hiiiiii</p>
-    <div>{console.log("this is HomepageItem", data, key)}</div>
-  </div>
-  // return (
-  //   <div className="main-index-item">
-  //
-  //      <div className="story-img">
-  //        <Link to={`/stories/${story.id}`}>
-  //          <img className="story-img" src={story.photo} alt="storyImageurl"></img>
-  //        </Link>
-  //      </div>
-  //
-  //      <div className="story-description">
-  //        <Link to={`/stories/${story.id}`}>
-  //          <h1 className="story-title">{story.title}</h1>
-  //        </Link>
-  //          <h1 className="story-subtitle">{story.subtitle}</h1>
-  //      </div>
-  //
-  //   </div>
-  //   );
-);
-
-// const mapStateToProps = ( state, ownProps ) => {
-//   return ({
-//     author: state.entities.users[ownProps.story.author_id]
-//   });
-// };
-
+const HomepageItem = props => {
+  if (!props.giffObj) {
+    return <div></div>
+  }
+    return (
+            <div>
+              <div>
+              {console.log("this is HomepageItem", props.giffObj)}
+              <img src={props.giffObj.images.original.url} height="200" width="300"/>
+              </div>
+            </div>
+      );
+};
 
 export default HomepageItem;

@@ -30,14 +30,13 @@ class Homepage extends Component {
   showAllGiffs() {
     console.log("inside showAllGiffs", this.state.data);
     return this.state.data.map((giffObj, idx)=>{
-      console.log(giffObj);
-      console.log("HEYYYYY");
-      <HomepageItem key={idx} data={giffObj} />
-      return <div key={idx}>
-                <a onClick={() => this.showGifInfo()}>
-                <img src={giffObj.images.original.url} height="200" width="300"/>
-                </a>
-             </div>
+      return  <HomepageItem
+              key={idx}
+              giffObj={giffObj} />
+
+                // <a onClick={() => this.showGifInfo()}>
+                // <img src={giffObj.images.original.url} height="200" width="300"/>
+                // </a>
     })
   }
 
