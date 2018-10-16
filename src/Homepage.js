@@ -9,14 +9,15 @@ class Homepage extends Component {
     this.state = {
       data: [],
       searchInput: "medical marijuana",
-      isDone: false
+      isDone: false,
+      limit: 10
     }
     this.onSearch = this.onSearch.bind(this);
     this.showSearch = this.showSearch.bind(this);
   }
 
   loadData() {
-    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=" + API_KEY + "&limit=3"
+    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=" + API_KEY + "&limit=" +  this.state.limit
     let xhr = $.get(url);
     xhr.done(function(response) {
       return response.data;
@@ -51,6 +52,14 @@ class Homepage extends Component {
   }
 
   render() {
+    console.log('this state', this.state)
+    let limit = this.state.limit;
+    let that = this;
+    $(window).scroll(function() {
+       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+           that.setState({limit: limit + 10, isDone: false})
+       }
+    });
     if (!this.state.isDone) {
       this.loadData()
     }

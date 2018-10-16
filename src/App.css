@@ -22,3 +22,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.singleGiff {
+  height:200px;
+  width:300px;
+}
+
+.giffInfo {
+
+}
