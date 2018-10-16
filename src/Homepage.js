@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import HomepageItem from './HomepageItem.js';
+import { API_KEY } from './constants.js'
 
 class Homepage extends Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class Homepage extends Component {
     this.showSearch = this.showSearch.bind(this);
   }
 
-  componentDidMountNew() {
-    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=Q8Pm82z06A50nknC7mFIAUf5w6bsUuaA&limit=3"
+  loadData() {
+    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=" + API_KEY + "&limit=3"
     let xhr = $.get(url);
     xhr.done(function(response) {
       return response.data;
@@ -36,9 +37,9 @@ class Homepage extends Component {
   }
 
   onSearch() {
-    console.log("inside onSearch")
+    console.log("inside onSearch", this.state.searchInput)
     let searchInput = $( "#searchInput" ).val();
-    this.setState({searchInput: searchInput})
+    this.setState({searchInput: searchInput, isDone: false})
   }
 
   showSearch() {
@@ -51,7 +52,7 @@ class Homepage extends Component {
 
   render() {
     if (!this.state.isDone) {
-      this.componentDidMountNew()
+      this.loadData()
     }
     if (!this.state.data) {
       return <div><h1>Loading ...</h1></div>
