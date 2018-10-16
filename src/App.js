@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import logo from './logo.svg';
 import './App.css';
-import DisplayGif from './Gif.js';
+import Homepage from './Homepage.js';
 
 class App extends Component {
   render() {
 
     return (
       <div className="App">
-        <div className="App-header">
+        <div>
           <h2>Welcome to Trending Giffs</h2>
         </div>
         <div>
-          <DisplayGif />
+          <Homepage />
         </div>
       </div>
     );

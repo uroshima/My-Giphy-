@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import HomepageItem from './HomepageItem.js';
 
-class DisplayGif extends Component {
+class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,11 +11,12 @@ class DisplayGif extends Component {
       isDone: false
     }
     this.onSearch = this.onSearch.bind(this);
+    this.showSearch = this.showSearch.bind(this);
   }
 
   componentDidMountNew() {
-    console.log('inside componentDidMountNew', this.state)
-    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=Q8Pm82z06A50nknC7mFIAUf5w6bsUuaA&limit=100"
+    // console.log('inside componentDidMountNew', this.state)
+    let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=Q8Pm82z06A50nknC7mFIAUf5w6bsUuaA&limit=3"
     let xhr = $.get(url);
     xhr.done(function(response) {
       return response.data;
@@ -29,32 +31,39 @@ class DisplayGif extends Component {
     console.log("inside showAllGiffs", this.state.data);
     return this.state.data.map((giffObj, idx)=>{
       console.log(giffObj);
-
+      console.log("HEYYYYY");
+      <HomepageItem key={idx} data={giffObj} />
       return <div key={idx}>
-                <a href="">
+                <a onClick={() => this.showGifInfo()}>
                 <img src={giffObj.images.original.url} height="200" width="300"/>
                 </a>
              </div>
     })
   }
 
+  showGifInfo() {
+    console.log("inside showGifInfo");
+    console.log(this.state.data[idx].id)
+  }
+
   onSearch() {
+    // console.log("inside onSearch")
     let searchInput = $( "#searchInput" ).val();
     this.setState({searchInput: searchInput})
+    // console.log(this.state.searchInput);
+    // console.log(this.state);
   }
 
   showSearch() {
-    console.log("inside showSearch");
-    
+    // console.log("inside showSearch");
+    return <div>
+            <input id="searchInput" type="text" placeholder="search for giffs"></input>
+            <button type="button" onClick={() => this.onSearch()}>search</button>
+           </div>
+
   }
 
   render() {
-    if (!this.state.searchInput) {
-      return <div>
-              <input id="searchInput" type="text" placeholder="search for giffs"></input>
-              <button type="button" onClick={() => this.onSearch()}>search</button>
-             </div>
-    }
     if (!this.state.isDone) {
       this.componentDidMountNew()
     }
@@ -62,9 +71,11 @@ class DisplayGif extends Component {
     if (!this.state.data) {
       return <div><h1>Loading ...</h1></div>
     }
-    {console.log('gifffss',this.state.data)}
+    // {console.log('gifffss',this.state.data)}
     return (
+      // console.log("Inside render")
       <div>
+      <HomepageItem />
         {this.showSearch()}
         {this.showAllGiffs()}
       </div>
@@ -73,4 +84,4 @@ class DisplayGif extends Component {
   }
 };
 
-export default DisplayGif;
+export default Homepage;

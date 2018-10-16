@@ -3,6 +3,10 @@ logs
 *.log
 npm-debug.log*
 
+# Ignore uploaded files in development
+/node_modules
+package-lock.json
+
 # Runtime data
 pids
 *.pid
