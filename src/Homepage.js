@@ -41,8 +41,8 @@ class Homepage extends Component {
   }
 
   showGifInfo() {
-    console.log("inside showGifInfo");
-    console.log(this.state.data[idx].id)
+    // console.log("inside showGifInfo");
+    // console.log(this.state.data[idx].id)
   }
 
   onSearch() {
