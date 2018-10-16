@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import './App.css';
 import Homepage from './Homepage.js';
 

@@ -29,7 +29,6 @@ class Homepage extends Component {
   }
 
   showAllGiffs() {
-    console.log("inside showAllGiffs", this.state.data);
     return this.state.data.map((giffObj, idx)=>{
       return  <HomepageItem
               key={idx}
@@ -38,13 +37,11 @@ class Homepage extends Component {
   }
 
   onSearch() {
-    console.log("inside onSearch", this.state.searchInput)
     let searchInput = $( "#searchInput" ).val();
     this.setState({searchInput: searchInput, isDone: false})
   }
 
   showSearch() {
-    console.log("inside showSearch");
     return <div>
             <input id="searchInput" type="text" placeholder="search for giffs"></input>
             <button type="button" onClick={() => this.onSearch()}>search</button>
@@ -52,11 +49,11 @@ class Homepage extends Component {
   }
 
   render() {
-    console.log('this state', this.state)
     let limit = this.state.limit;
     let that = this;
+
     $(window).scroll(function() {
-       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       if($(window).scrollTop() + $(window).height() === $(document).height()) {
            that.setState({limit: limit + 10, isDone: false})
        }
     });
@@ -66,6 +63,7 @@ class Homepage extends Component {
     if (!this.state.data) {
       return <div><h1>Loading ...</h1></div>
     }
+
     return (
       <div>
       <HomepageItem />

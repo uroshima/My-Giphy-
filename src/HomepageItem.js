@@ -37,7 +37,7 @@ class HomepageItem extends Component {
       return (
               <div>
                 <div>
-                  <img onClick={(e) => this.showGifInfo(e)} src={this.props.giffObj.images.original.url} className="singleGiff"/>
+                  <img onClick={(e) => this.showGifInfo(e)} src={this.props.giffObj.images.original.url} alt="single giff" className="singleGiff"/>
                   {this.state.info ? this.printInfo() : ''}
                 </div>
               </div>
