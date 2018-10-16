@@ -15,7 +15,6 @@ class Homepage extends Component {
   }
 
   componentDidMountNew() {
-    // console.log('inside componentDidMountNew', this.state)
     let url = "http://api.giphy.com/v1/gifs/search?q=" + this.state.searchInput + "&api_key=Q8Pm82z06A50nknC7mFIAUf5w6bsUuaA&limit=3"
     let xhr = $.get(url);
     xhr.done(function(response) {
@@ -33,46 +32,31 @@ class Homepage extends Component {
       return  <HomepageItem
               key={idx}
               giffObj={giffObj} />
-
-                // <a onClick={() => this.showGifInfo()}>
-                // <img src={giffObj.images.original.url} height="200" width="300"/>
-                // </a>
     })
   }
 
-  showGifInfo() {
-    // console.log("inside showGifInfo");
-    // console.log(this.state.data[idx].id)
-  }
-
   onSearch() {
-    // console.log("inside onSearch")
+    console.log("inside onSearch")
     let searchInput = $( "#searchInput" ).val();
     this.setState({searchInput: searchInput})
-    // console.log(this.state.searchInput);
-    // console.log(this.state);
   }
 
   showSearch() {
-    // console.log("inside showSearch");
+    console.log("inside showSearch");
     return <div>
             <input id="searchInput" type="text" placeholder="search for giffs"></input>
             <button type="button" onClick={() => this.onSearch()}>search</button>
            </div>
-
   }
 
   render() {
     if (!this.state.isDone) {
       this.componentDidMountNew()
     }
-    // {this.componentDidMountNew()}
     if (!this.state.data) {
       return <div><h1>Loading ...</h1></div>
     }
-    // {console.log('gifffss',this.state.data)}
     return (
-      // console.log("Inside render")
       <div>
       <HomepageItem />
         {this.showSearch()}
