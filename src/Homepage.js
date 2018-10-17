@@ -29,33 +29,33 @@ class Homepage extends Component {
   }
 
   showAllGiffs() {
-    return this.state.data.map((giffObj, idx)=>{
+    return <div className="content">
+    {this.state.data.map((giffObj, idx)=>{
       return  <HomepageItem
               key={idx}
               giffObj={giffObj} />
-    })
+          })}
+    </div>
   }
 
   onSearch() {
     let searchInput = $( "#searchInput" ).val();
+    if (searchInput === "") {
+      searchInput = "beautiful day";
+    }
     this.setState({searchInput: searchInput, isDone: false})
   }
 
   showSearch() {
-    // return <div>
-    //         <input id="search-input" type="text" placeholder="Search GIFs"></input>
-    //         <button type="button" onClick={() => this.onSearch()} className="btn btn-outline-dark">GO</button>
-    //        </div>
     return (
       <div className="input-group mb-3">
         <div className="input-group-prepend">
           <span className="input-group-text" id="inputGroup-sizing-default" >Trending GIFs</span>
         </div>
-        <input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search All the GIFs and Stickers" />
+        <input type="text" id="searchInput" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search All the GIFs and Stickers" />
+        <button type="button" onClick={() => this.onSearch()} className="btn btn-light">Search</button>
       </div>
-
     )
-
   }
 
   render() {
@@ -77,11 +77,11 @@ class Homepage extends Component {
 
     return (
       <div>
-          {this.showSearch()}
-        <div>
+        {this.showSearch()}
+        {this.showAllGiffs()}
+        <div className="content">
           <HomepageItem />
         </div>
-          {this.showAllGiffs()}
       </div>
 
     );

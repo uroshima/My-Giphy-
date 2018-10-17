@@ -12,10 +12,10 @@ class HomepageItem extends Component {
   printInfo() {
     return (
       <div className="giffInfo">
-        <p>id:{this.props.giffObj.id}<br /></p>
-        <p>username:{this.props.giffObj.username}<br /></p>
-        <p>title:{this.props.giffObj.title}<br /></p>
-        <p>rating:{this.props.giffObj.rating}<br /></p>
+        <p>Id: {this.props.giffObj.id}<br /></p>
+        <p>Username: {this.props.giffObj.username}<br /></p>
+        <p>Title: {this.props.giffObj.title}<br /></p>
+        <p>Rating: {this.props.giffObj.rating}<br /></p>
       </div>
     )
   }
