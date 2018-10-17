@@ -8,12 +8,11 @@ class Homepage extends Component {
     super(props);
     this.state = {
       data: [],
+      // the website shows giffs with "beautiful day" content as default
       searchInput: "beautiful day",
       isDone: false,
       limit: 20
     }
-    this.onSearch = this.onSearch.bind(this);
-    this.showSearch = this.showSearch.bind(this);
   }
 
   loadData() {
@@ -33,17 +32,19 @@ class Homepage extends Component {
     {this.state.data.map((giffObj, idx)=>{
       return  <HomepageItem
               key={idx}
-              giffObj={giffObj} />
+              giffObj={giffObj}
+              />
           })}
     </div>
   }
 
   onSearch() {
     let searchInput = $( "#searchInput" ).val();
+    // if you click on the search bar but type nothing and click search, then show giffs with "beautiful day" content
     if (searchInput === "") {
       searchInput = "beautiful day";
     }
-    this.setState({searchInput: searchInput, isDone: false})
+    this.setState({searchInput: searchInput, isDone: false});
   }
 
   showSearch() {
@@ -52,7 +53,7 @@ class Homepage extends Component {
         <div className="input-group-prepend">
           <span className="input-group-text" id="inputGroup-sizing-default" >Trending GIFs</span>
         </div>
-        <input type="text" id="searchInput" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search All the GIFs and Stickers" />
+        <input type="text" id="searchInput" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search All the GIFs" />
         <button type="button" onClick={() => this.onSearch()} className="btn btn-light">Search</button>
       </div>
     )

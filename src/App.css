@@ -1,11 +1,9 @@
 .App {
   text-align: center;
   background-color: #222;
-
 }
 
 .App-header {
-  /* background-color: #222; */
   height: 150px;
   padding: 50px;
   color: white;
@@ -16,17 +14,6 @@
 
 h1 {
   font-size: 3.0rem;
-}
-
-.App-intro {
-  font-size: large;
-  text-align: center;
-
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .singleGiff {
@@ -41,17 +28,10 @@ h1 {
 }
 
 .content {
-  grid-template-columns: 0fr 1fr 1fr 1fr;
-  /* grid-auto-rows: minmax(250px, auto); */
-  /* grid-gap: 5px; */
+  margin-top: 100px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
   display: grid;
-  /* max-width: 960px; */
-  margin: 0 auto;
-}
-
-.btn-outline-dark {
-  /* padding-left: 20px; */
-  /* margin-left: 20px; */
 }
 
 .btn-light {
@@ -72,10 +52,9 @@ h1 {
   margin-left: 100px;
 }
 
-.form-control {
-  /* margin-right: 100px; */
-}
 
 .giffInfo {
   color: white;
+  text-align: left;
+  margin-left: 40px;
 }

@@ -34,14 +34,15 @@ class HomepageItem extends Component {
     if (!this.props.giffObj) {
       return <div></div>
     }
-      return (
+
+    return (
+            <div>
               <div>
-                <div>
-                  <img onClick={(e) => this.showGifInfo(e)} src={this.props.giffObj.images.original.url} alt="single giff" className="singleGiff"/>
-                  {this.state.info ? this.printInfo() : ''}
-                </div>
+                <img onClick={(e) => this.showGifInfo(e)} src={this.props.giffObj.images.original.url} alt="single giff" className="singleGiff"/>
+                {this.state.info ? this.printInfo() : ''}
               </div>
-        );
+            </div>
+      );
   }
 };
 
