@@ -8,9 +8,9 @@ class Homepage extends Component {
     super(props);
     this.state = {
       data: [],
-      searchInput: "medical marijuana",
+      searchInput: "beautiful day",
       isDone: false,
-      limit: 10
+      limit: 20
     }
     this.onSearch = this.onSearch.bind(this);
     this.showSearch = this.showSearch.bind(this);
@@ -42,10 +42,20 @@ class Homepage extends Component {
   }
 
   showSearch() {
-    return <div>
-            <input id="searchInput" type="text" placeholder="search for giffs"></input>
-            <button type="button" onClick={() => this.onSearch()}>search</button>
-           </div>
+    // return <div>
+    //         <input id="search-input" type="text" placeholder="Search GIFs"></input>
+    //         <button type="button" onClick={() => this.onSearch()} className="btn btn-outline-dark">GO</button>
+    //        </div>
+    return (
+      <div className="input-group mb-3">
+        <div className="input-group-prepend">
+          <span className="input-group-text" id="inputGroup-sizing-default" >Trending GIFs</span>
+        </div>
+        <input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search All the GIFs and Stickers" />
+      </div>
+
+    )
+
   }
 
   render() {
@@ -54,9 +64,10 @@ class Homepage extends Component {
 
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() === $(document).height()) {
-           that.setState({limit: limit + 10, isDone: false})
+           that.setState({limit: limit + 20, isDone: false})
        }
     });
+
     if (!this.state.isDone) {
       this.loadData()
     }
@@ -66,9 +77,11 @@ class Homepage extends Component {
 
     return (
       <div>
-      <HomepageItem />
-        {this.showSearch()}
-        {this.showAllGiffs()}
+          {this.showSearch()}
+        <div>
+          <HomepageItem />
+        </div>
+          {this.showAllGiffs()}
       </div>
 
     );
